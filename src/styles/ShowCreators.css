@@ -1,0 +1,20 @@
+.container-custom{
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.wrapper{
+    max-width: 900px;
+    margin: auto;
+}
