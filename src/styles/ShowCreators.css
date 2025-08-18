@@ -18,3 +18,17 @@
     max-width: 900px;
     margin: auto;
 }
+
+.left{
+    display: block;
+    margin: auto;
+    max-height: 400px;
+    padding: 0;
+    flex: 1;
+    object-fit: fill;
+} 
+
+.right{
+    flex: 1;
+    margin: auto;
+}
