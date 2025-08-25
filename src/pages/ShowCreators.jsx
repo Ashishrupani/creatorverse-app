@@ -1,13 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/ShowCreators.css";
 import "@picocss/pico";
 
-const ShowCreators = ({ name, imageUrl, description, Url }) => {
-
+const ShowCreators = (props) => {
+  const location = useLocation();
   const navigate = useNavigate();
+  
+  const {id, name, imageUrl, description, url} = location.state;
+  
 
-  const handleEdit = (e)=> {
-    navigate("/edit-creator");
+  const handleEdit = ()=> {
+    navigate("/edit-creator", {state : {id, name, url, description, imageUrl}});
+  }
+
+  const handleReturn = ()=> {
+    navigate("/");
   }
 
   return (
@@ -28,7 +35,7 @@ const ShowCreators = ({ name, imageUrl, description, Url }) => {
                 </textarea>
               </label>
               <footer>
-                <a href={Url}>{Url}</a>
+                <a href={url}>{url}</a>
               </footer>
             </article>
           </div>
@@ -37,7 +44,7 @@ const ShowCreators = ({ name, imageUrl, description, Url }) => {
         <div className="article">
           <div class="grid">
             <button class="secondary" onClick={handleEdit}>Edit</button>
-            <button class="primary">Done</button>
+            <button class="primary" onClick={handleReturn}>Done</button>
           </div>
         </div>
       </div>

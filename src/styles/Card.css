@@ -10,24 +10,36 @@
     gap: 20px;
 }
 
+.card-image{
+    max-width: 300px;
+    height: auto;
+}
+
 .custom-buttons{
-    height: 60%;
+    height: 50%;
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.contrast{
+.custom-buttons > .contrast
+{
     border-radius: 50%;
-    height: 60%;
+    height: 20%;
     display: flex;
     justify-content: center;
+    padding: 5px 8px;
 }
 
-.secondary{
+.custom-buttons > .info{
+    padding: 5px 15px;
+}
+
+.custom-buttons >.secondary{
     border-radius: 50%;
-    height: 60%;
+    height: 20%;
     display: flex;
     justify-content: center;
+    padding: 5px 8px;
 }
 

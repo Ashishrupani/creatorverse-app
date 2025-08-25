@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { supabase } from "../client.js";
 
 
 const EditCreator = (props) => {
-
   const location = useLocation();
   const navigate = useNavigate();
 
-  const {name, imageUrl, description, url} = location.state;
+  const {id, name, imageUrl, description, url} = location.state;
 
   const [nameSt, setName] = useState(name);
   const [imageUrlSt, setImageUrl] = useState(imageUrl);
@@ -18,7 +18,21 @@ const EditCreator = (props) => {
     e.preventDefault();
     
     console.log(nameSt, imageUrlSt, descriptionSt, UrlSt);
+    editCreator();
     navigate("/");
+  }
+
+  const editCreator = async() => {
+    const {data, error} = await supabase.from("creators").update({name : nameSt, description : descriptionSt, url : UrlSt, imageURL : imageUrlSt}).eq('id', id).select();
+
+    if(error){
+      console.log("error updating data");
+    }
+    else{
+      console.log("data updated");
+      console.log(data);
+    }
+
   }
 
   return (
