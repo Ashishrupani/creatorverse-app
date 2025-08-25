@@ -1,17 +1,24 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const EditCreator = (props) => {
 
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [description, setDescription] = useState("");
-  const [Url, setUrl] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const {name, imageUrl, description, url} = location.state;
+
+  const [nameSt, setName] = useState(name);
+  const [imageUrlSt, setImageUrl] = useState(imageUrl);
+  const [descriptionSt, setDescription] = useState(description);
+  const [UrlSt, setUrl] = useState(url);
 
   const handleSubmit = (e)=> {
     e.preventDefault();
     
-    console.log(name, imageUrl, description, Url);
+    console.log(nameSt, imageUrlSt, descriptionSt, UrlSt);
+    navigate("/");
   }
 
   return (
@@ -26,6 +33,7 @@ const EditCreator = (props) => {
                 name="Creator-name"
                 placeholder="Content Creator's name"
                 onChange={(e) => setName(e.target.value)}
+                value={nameSt}
               />
             </label>
             <label>
@@ -35,6 +43,7 @@ const EditCreator = (props) => {
                 name="Image-url"
                 placeholder="Image Url"
                 onChange={(e) => setImageUrl(e.target.value)}
+                value={imageUrlSt}
               />
             </label>
             <label>
@@ -44,6 +53,7 @@ const EditCreator = (props) => {
                 name="Description"
                 placeholder="Content Creator's description"
                 onChange={(e) => setDescription(e.target.value)}
+                value={descriptionSt}
               />
             </label>
             <label>
@@ -53,6 +63,7 @@ const EditCreator = (props) => {
                 name="Url"
                 placeholder="links"
                 onChange={(e) => setUrl(e.target.value)}
+                value={UrlSt}
               />
             </label>
           </fieldset>
