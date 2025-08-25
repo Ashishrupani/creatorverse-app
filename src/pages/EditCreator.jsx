@@ -25,7 +25,6 @@ const EditCreator = (props) => {
               <input
                 name="Creator-name"
                 placeholder="Content Creator's name"
-                autocomplete="given-name"
                 onChange={(e) => setName(e.target.value)}
               />
             </label>

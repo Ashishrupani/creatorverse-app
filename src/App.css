@@ -1,7 +1,32 @@
+.head{
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    margin: auto;
+}
+
 .box{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
+.title{
+    text-align: center;
+}
 
+.container-custom{
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}

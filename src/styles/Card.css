@@ -1,0 +1,33 @@
+.card-description{
+    max-width: 300px;
+    max-height: 500px;
+}
+
+.head-description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.custom-buttons{
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contrast{
+    border-radius: 50%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.secondary{
+    border-radius: 50%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+
