@@ -56,7 +56,9 @@ const HomePage = ({}) => {
             <Card key={card.id} id= {card.id} name={card.name} url={card.url} description={card.description} imageUrl={card.imageURL}/>
           ))
         ) : (
-          <></>
+          <>
+          <><Card description={"Loading....."}/></>
+          </>
         )}
       </div>
     </>
