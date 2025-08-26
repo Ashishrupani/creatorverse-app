@@ -30,7 +30,6 @@ const EditCreator = (props) => {
     }
     else{
       console.log("data updated");
-      console.log(data);
     }
 
   }

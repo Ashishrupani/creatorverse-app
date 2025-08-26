@@ -2,6 +2,8 @@ import "@picocss/pico";
 import "../styles/Card.css";
 import { useNavigate } from "react-router-dom";
 import { FcInfo } from "react-icons/fc";
+import { supabase } from "../client";
+import { useEffect } from "react";
 
 const Card = ({ id, name, url, description, imageUrl }) => {
   const navigate = useNavigate();
@@ -18,8 +20,16 @@ const Card = ({ id, name, url, description, imageUrl }) => {
     });
   };
 
-  const handleDelete = () => {
-    console.log(`Delete from id: ${name}`);
+  const handleDelete = async () => {
+    const {data, error} = await supabase.from('creators').delete().eq('id', id).select();
+
+    if(error){
+      console.log('There was an error deleting data');
+    }
+    else{
+      console.log("Deleted..");
+      console.log(data);
+    }
   };
 
   return (

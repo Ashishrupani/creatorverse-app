@@ -1,54 +1,63 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/ShowCreators.css";
 import "@picocss/pico";
+import Card from "../components/Card";
+import { supabase } from "../client.js";
 
-const ShowCreators = (props) => {
-  const location = useLocation();
+const ShowCreators = ({}) => {
+  const [cards, setCards] = useState([]);
   const navigate = useNavigate();
-  
-  const {id, name, imageUrl, description, url} = location.state;
+
+  const fetchCreators = async () => {
+    const {data, error} = await supabase.from("creators").select("id, name, description, url, imageURL").limit("5");
+
+    if (error){
+      //window.alert("error occured fetching data from database");
+      setCards([]);
+    }
+    else{
+      //window.alert("creators fetched successfully");
+      setCards(data);
+    }
+  }
   
 
-  const handleEdit = ()=> {
-    navigate("/edit-creator", {state : {id, name, url, description, imageUrl}});
+  const handleLoadCreators = async (e) => {
+    fetchCreators();
+  };
+
+  const handleAddCreator = () => {
+    navigate("/add-creator");
   }
 
-  const handleReturn = ()=> {
-    navigate("/");
-  }
+  useEffect(()=> {
+    fetchCreators();
+  },[cards]);
+
 
   return (
-    <div className="container">
-      <div className="wrapper">
-        <div className="container-custom">
-          <div className="left">
-            <img src={imageUrl} alt="content creator's picture" />
-          </div>
-          <div className="right">
-            <article>
-              <header>{name}</header>
-              <label>
-                {" "}
-                Description
-                <textarea name="read-only" readonly="true">
-                  {description}
-                </textarea>
-              </label>
-              <footer>
-                <a href={url}>{url}</a>
-              </footer>
-            </article>
-          </div>
-        </div>
-
-        <div className="article">
-          <div class="grid">
-            <button class="secondary" onClick={handleEdit}>Edit</button>
-            <button class="primary" onClick={handleReturn}>Done</button>
-          </div>
-        </div>
+    <>
+      <div className="head">
+        <h1>Creatorverse</h1>
       </div>
-    </div>
+      <div className="custom-buttons">
+        <button onClick={handleAddCreator}>Add Creator</button>
+        <button onClick={handleLoadCreators}>Load Creators</button>
+      </div>
+
+      <div className="container-custom">
+        {cards ? (
+          cards.map((card) => (
+            <Card key={card.id} id= {card.id} name={card.name} url={card.url} description={card.description} imageUrl={card.imageURL}/>
+          ))
+        ) : (
+          <>
+          <><Card description={"Loading....."}/></>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
