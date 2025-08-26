@@ -30,8 +30,7 @@ const ViewCreator = (props) => {
               <label>
                 {" "}
                 Description
-                <textarea name="read-only" readonly="true">
-                  {description}
+                <textarea name="read-only" readOnly={true} value={description}>
                 </textarea>
               </label>
               <footer>
@@ -42,9 +41,9 @@ const ViewCreator = (props) => {
         </div>
 
         <div className="article">
-          <div class="grid">
-            <button class="secondary" onClick={handleEdit}>Edit</button>
-            <button class="primary" onClick={handleReturn}>Done</button>
+          <div className="grid">
+            <button className="secondary" onClick={handleEdit}>Edit</button>
+            <button className="primary" onClick={handleReturn}>Done</button>
           </div>
         </div>
       </div>
