@@ -1,3 +1,9 @@
+.background{
+    background-image: url("../background-img.jpg");
+    background-size: 100% 100%;
+    height: 100vh;
+}
+
 .head{
     display: flex;
     justify-content: center;
@@ -15,19 +21,11 @@
     text-align: center;
 }
 
-.container-custom{
-    height: 100vh;
+.custom-buttons-app{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-}
-
-.custom-buttons{
-    display: flex;
-    flex-direction: row;
     gap: 50px;
     margin-bottom: 20px;
 }

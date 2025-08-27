@@ -4,6 +4,7 @@ import "../styles/ShowCreators.css";
 import "@picocss/pico";
 import Card from "../components/Card";
 import { supabase } from "../client.js";
+import Footer from "../components/Footer.jsx";
 
 const ShowCreators = ({}) => {
   const [cards, setCards] = useState([]);
@@ -46,7 +47,8 @@ const ShowCreators = ({}) => {
         <button onClick={handleLoadCreators}>Load Creators</button>
       </div>
 
-      <div className="container-custom">
+      <article>
+      <div className="container-custom-cards">
         {cards ? (
           cards.map((card) => (
             <Card key={card.id} id= {card.id} name={card.name} url={card.url} description={card.description} imageUrl={card.imageURL}/>
@@ -57,6 +59,8 @@ const ShowCreators = ({}) => {
           </>
         )}
       </div>
+      <Footer />
+      </article>
     </>
   );
 };

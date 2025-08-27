@@ -1,0 +1,11 @@
+.footer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer-main{
+    position: absolute;
+    bottom: -63vh;
+}

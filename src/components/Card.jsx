@@ -3,7 +3,6 @@ import "../styles/Card.css";
 import { useNavigate } from "react-router-dom";
 import { FcInfo } from "react-icons/fc";
 import { supabase } from "../client";
-import { useEffect } from "react";
 
 const Card = ({ id, name, url, description, imageUrl }) => {
   const navigate = useNavigate();

@@ -1,0 +1,10 @@
+.container-custom-cards{
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 20px 5px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: fit-content;
+}

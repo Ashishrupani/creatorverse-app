@@ -19,7 +19,7 @@ const AddCreator = () => {
       navigate("/");
     }
 
-    if (data.length > 5) {  //If the there are five entries in the database replace the entry with the smallest id.
+    if (data.length > 8) {  //If the there are eight entries in the database replace the entry with the smallest id.
       const listOfIds = [];
       data.map((creator) => {
         listOfIds.push(creator.id);
@@ -35,7 +35,7 @@ const AddCreator = () => {
       }
       console.log(nameSt, imageUrlSt, descriptionSt, UrlSt);
 
-    } else { //if there are less than 5 entries in the database then just add the entry
+    } else { //if there are less than 8 entries in the database then just add the entry
       const response = await supabase.from("creators").insert({
         name: nameSt,
         description: descriptionSt,
