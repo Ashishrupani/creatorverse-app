@@ -14,7 +14,7 @@ const ViewCreator = (props) => {
   }
 
   const handleReturn = ()=> {
-    navigate("/");
+    navigate("/show-creators");
   }
 
   return (

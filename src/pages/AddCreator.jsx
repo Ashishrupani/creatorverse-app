@@ -51,7 +51,7 @@ const AddCreator = () => {
       console.log(nameSt, imageUrlSt, descriptionSt, UrlSt);
     }
 
-    navigate("/");
+    navigate("/show-creators");
   };
 
   return (

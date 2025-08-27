@@ -19,11 +19,11 @@ const EditCreator = (props) => {
     
     console.log(nameSt, imageUrlSt, descriptionSt, UrlSt);
     editCreator();
-    navigate("/");
+    navigate("/show-creators");
   }
 
   const editCreator = async() => {
-    const {data, error} = await supabase.from("creators").update({name : nameSt, description : descriptionSt, url : UrlSt, imageURL : imageUrlSt}).eq('id', id).select();
+    const {error} = await supabase.from("creators").update({name : nameSt, description : descriptionSt, url : UrlSt, imageURL : imageUrlSt}).eq('id', id).select();
 
     if(error){
       console.log("error updating data");
