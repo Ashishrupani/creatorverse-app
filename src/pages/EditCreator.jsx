@@ -36,8 +36,8 @@ const EditCreator = (props) => {
 
   return (
     <>
-      <h1>Edit Creator</h1>
-      <article>
+      <h1 className="title">Edit Creator</h1>
+      <article className="wrapper">
         <form>
           <fieldset>
             <label>

@@ -4,14 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { FcInfo } from "react-icons/fc";
 import { supabase } from "../client";
 
-const Card = ({ id, name, url, description, imageUrl }) => {
+const Card = ({ id, name, url, description, imageUrl , handleDeleteClick}) => {
   const navigate = useNavigate();
-
-  const handleEdit = () => {
-    navigate("/edit-creator", {
-      state: { id, name, url, description, imageUrl },
-    });
-  };
 
   const handleView = () => {
     navigate("/view-creator", {
@@ -19,17 +13,24 @@ const Card = ({ id, name, url, description, imageUrl }) => {
     });
   };
 
-  const handleDelete = async () => {
-    const {data, error} = await supabase.from('creators').delete().eq('id', id).select();
-
-    if(error){
-      console.log('There was an error deleting data');
-    }
-    else{
-      console.log("Deleted..");
-      console.log(data);
-    }
+  const handleEdit = () => {
+    navigate("/edit-creator", {
+      state: { id, name, url, description, imageUrl },
+    });
   };
+
+  // const handleDelete = async () => {
+  //   const {data, error} = await supabase.from('creators').delete().eq('id', id).select();
+
+  //   if(error){
+  //     console.log('There was an error deleting data');
+  //   }
+  //   else{
+  //     console.log("Deleted..");
+  //     console.log(data);
+  //   }
+    
+  // };
 
   return (
     <>
@@ -39,8 +40,12 @@ const Card = ({ id, name, url, description, imageUrl }) => {
           <h2 className="card-title">
             {name}
             <div className="title-buttons">
-              <button onClick={handleEdit} className="secondary">&#x270E;</button>
-              <button onClick={handleDelete} className="secondary">&#x1F5D1;</button>
+              <button onClick={handleEdit} className="secondary">
+                &#x270E;
+              </button>
+              <button onClick={() => {handleDeleteClick(id)}} className="secondary">
+                &#x1F5D1;
+              </button>
             </div>
           </h2>
           <p className="card-text">{description}</p>

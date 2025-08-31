@@ -26,7 +26,7 @@ const ViewCreator = (props) => {
           </div>
           <div className="right">
             <article>
-              <header>{name}</header>
+              <header className="title">{name}</header>
               <label>
                 {" "}
                 Description
@@ -40,7 +40,7 @@ const ViewCreator = (props) => {
           </div>
         </div>
 
-        <div className="article">
+        <div className="wrapper">
           <div className="grid">
             <button className="secondary" onClick={handleEdit}>Edit</button>
             <button className="primary" onClick={handleReturn}>Done</button>

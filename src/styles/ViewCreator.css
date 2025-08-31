@@ -20,16 +20,23 @@
 }
 
 .left{
-    display: block;
-    margin: auto;
     max-height: 400px;
     padding: 0;
     flex: 1;
     object-fit: fill;
 }
 
+
 .right{
+    max-height: 400px;
     flex: 1;
     margin: auto;
+}
+
+.wrapper{
+    margin-top: 10px;
+}
+.grid{
+    margin: 5px 5px 5px 5px;
 }
 

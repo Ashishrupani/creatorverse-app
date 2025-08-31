@@ -4,6 +4,7 @@ import "../styles/ShowCreators.css";
 import "@picocss/pico";
 import Card from "../components/Card";
 import { supabase } from "../client.js";
+import axios from 'axios';
 import Footer from "../components/Footer.jsx";
 
 const ShowCreators = ({}) => {
@@ -11,7 +12,8 @@ const ShowCreators = ({}) => {
   const navigate = useNavigate();
 
   const fetchCreators = async () => {
-    const {data, error} = await supabase.from("creators").select("id, name, description, url, imageURL").limit("5");
+    const {data, error} = await supabase.from('creators').select("id, name, description, url, imageURL").limit(5);
+    //const {data, error} = await axios.get('http://localhost:5000/show-creators');
 
     if (error){
       //window.alert("error occured fetching data from database");
@@ -24,17 +26,34 @@ const ShowCreators = ({}) => {
   }
   
 
-  const handleLoadCreators = async (e) => {
+  const handleLoadCreators = async () => {
     fetchCreators();
   };
 
   const handleAddCreator = () => {
     navigate("/add-creator");
-  }
+  };
+  
+  const handleDeleteCreator = async (id) => {
 
-  useEffect(()=> {
-    fetchCreators();
-  },[cards]);
+    const response = await supabase.from('creators').delete().eq('id', id).select();
+
+    if(response.error){
+      console.log("There was an error deleting the record...");
+    }
+    else{
+      const newCards = [...cards];
+      const index = cards.findIndex((card) => card.id === id);
+      newCards.splice(index, 1);
+      setCards(newCards);
+    }
+
+  };
+
+  useEffect(()=>{
+    handleLoadCreators();
+  },[]);
+
 
 
   return (
@@ -51,11 +70,11 @@ const ShowCreators = ({}) => {
       <div className="container-custom-cards">
         {cards ? (
           cards.map((card) => (
-            <Card key={card.id} id= {card.id} name={card.name} url={card.url} description={card.description} imageUrl={card.imageURL}/>
+            <Card key={card.id} id= {card.id} name={card.name} url={card.url} description={card.description} imageUrl={card.imageURL} handleDeleteClick={handleDeleteCreator}/>
           ))
         ) : (
           <>
-          <><Card description={"Loading....."}/></>
+          <Card/>
           </>
         )}
       </div>
